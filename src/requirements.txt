@@ -1,0 +1,9 @@
+discord.py
+requests
+discord-py-slash-command
+python-dotenv
+lavalink
+praw
+psycopg2-binary
+beautifulsoup4
+Pillow
