@@ -134,3 +134,4 @@ dmypy.json
 # Logs File
 bot.log
 logs
+logs/
