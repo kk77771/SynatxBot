@@ -1,13 +1,9 @@
 import discord
-from discord import colour
 from discord.ext import commands
-from discord.ext.commands.help import HelpCommand
 from discord.ext.tasks import loop
 import os
 import psycopg2
 from discord_slash import SlashCommand
-from discord_slash import SlashCommand, SlashContext, cog_ext
-from discord_slash.utils.manage_commands import create_option, create_choice
 import logging
 from dotenv import load_dotenv
 load_dotenv()
