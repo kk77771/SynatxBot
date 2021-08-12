@@ -7,6 +7,26 @@ import psycopg2
 from bot import DB_NAME, DB_PASS, DB_HOST, DB_USER, logger, private_message
 
 
+class TimeConverter(commands.Converter):
+    def convert(self, ctx, argument):
+        pos = ['s', 'm', 'h', 'd']
+
+        time_dict = {"s": 1, "m": 60, "h": 3600, "d": 24 * 3600}
+
+        # getting what type
+        unit = argument[-1]
+
+        if unit not in pos:
+            return -1
+        try:
+            # get the value until the last num
+            value = int(argument[:-1])
+        except Exception as e:
+            return -2
+
+        return value * time_dict[unit]
+
+
 class Moderation(commands.Cog):
     def __init__(self, client):
         self.client = client
