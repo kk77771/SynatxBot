@@ -130,8 +130,6 @@ class Moderation(commands.Cog):
             return m.author.id == ctx.message.author.id and m.channel == ctx.channel
         await ctx.send('Are you sure you want to nuke this room? yes/no.')
         answer = await self.client.wait_for('message', check=check)
-        channel_name = ctx.channel.name
-        channel_category = ctx.channel.category
         if answer.content == 'yes':
             await ctx.channel.delete()
             nuked_channel = await ctx.channel.clone()
