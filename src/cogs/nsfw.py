@@ -19,8 +19,8 @@ class Nsfw(commands.Cog):
     @nsfw.command(name="hentai", description="Sending a hentai gif.")
     async def hentai(self, ctx):
         if ctx.channel.is_nsfw():
-            respose = requests.get("https://nekos.life/api/v2/img/Random_hentai_gif")
-            data = json.loads(respose.text)
+            response = requests.get("https://nekos.life/api/v2/img/Random_hentai_gif")
+            data = json.loads(response.text)
             await ctx.send(data["url"])
         else:
             await ctx.send("This channel has to have nsfw enabled!")
@@ -28,8 +28,8 @@ class Nsfw(commands.Cog):
     @nsfw.command(name="boobs", description="Sending a boobs gif.")
     async def boobs(self, ctx):
         if ctx.channel.is_nsfw():
-            respose = requests.get("https://nekos.life/api/v2/img/boobs")
-            data = json.loads(respose.text)
+            response = requests.get("https://nekos.life/api/v2/img/boobs")
+            data = json.loads(response.text)
             await ctx.send(data["url"])
         else:
             await ctx.send("This channel has to have nsfw enabled!")
@@ -37,8 +37,8 @@ class Nsfw(commands.Cog):
     @nsfw.command(name="anal", description="Sending a anal gif.")
     async def anal(self, ctx):
         if ctx.channel.is_nsfw():
-            respose = requests.get("https://nekos.life/api/v2/img/anal")
-            data = json.loads(respose.text)
+            response = requests.get("https://nekos.life/api/v2/img/anal")
+            data = json.loads(response.text)
             await ctx.send(data["url"])
         else:
             await ctx.send("This channel has to have nsfw enabled!")
@@ -46,8 +46,8 @@ class Nsfw(commands.Cog):
     @nsfw.command(name="pussy", description="Sending a pussy gif.")
     async def pussy(self, ctx):
         if ctx.channel.is_nsfw():
-            respose = requests.get("https://nekos.life/api/v2/img/pussy")
-            data = json.loads(respose.text)
+            response = requests.get("https://nekos.life/api/v2/img/pussy")
+            data = json.loads(response.text)
             await ctx.send(data["url"])
         else:
             await ctx.send("This channel has to have nsfw enabled!")
@@ -55,8 +55,8 @@ class Nsfw(commands.Cog):
     @nsfw.command(name="solo", description="Sending a girl masturbating gif.")
     async def solo(self, ctx):
         if ctx.channel.is_nsfw():
-            respose = requests.get("https://nekos.life/api/v2/img/solog")
-            data = json.loads(respose.text)
+            response = requests.get("https://nekos.life/api/v2/img/solog")
+            data = json.loads(response.text)
             await ctx.send(data["url"])
         else:
             await ctx.send("This channel has to have nsfw enabled!")
@@ -64,8 +64,8 @@ class Nsfw(commands.Cog):
     @nsfw.command(name="blowjob", description="Sending a blowjob gif.")
     async def blowjob(self, ctx):
         if ctx.channel.is_nsfw():
-            respose = requests.get("https://nekos.life/api/v2/img/bj")
-            data = json.loads(respose.text)
+            response = requests.get("https://nekos.life/api/v2/img/bj")
+            data = json.loads(response.text)
             await ctx.send(data["url"])
         else:
             await ctx.send("This channel has to have nsfw enabled!")
@@ -73,11 +73,12 @@ class Nsfw(commands.Cog):
     @nsfw.command(name="lesbian", description="Sending a lesbian gif.")
     async def lesbian(self, ctx):
         if ctx.channel.is_nsfw():
-            respose = requests.get("https://nekos.life/api/v2/img/les")
-            data = json.loads(respose.text)
+            response = requests.get("https://nekos.life/api/v2/img/les")
+            data = json.loads(response.text)
             await ctx.send(data["url"])
         else:
             await ctx.send("This channel has to have nsfw enabled!")
+
 
 def setup(bot):
     bot.add_cog(Nsfw(bot))
