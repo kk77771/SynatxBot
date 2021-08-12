@@ -7,26 +7,6 @@ import psycopg2
 from bot import DB_NAME, DB_PASS, DB_HOST, DB_USER, logger, private_message
 
 
-class TimeConverter(commands.Converter):
-    def convert(self, ctx, argument):
-        pos = ['s', 'm', 'h', 'd']
-
-        time_dict = {"s": 1, "m": 60, "h": 3600, "d": 24 * 3600}
-
-        # getting what type
-        unit = argument[-1]
-
-        if unit not in pos:
-            return -1
-        try:
-            # get the value until the last num
-            value = int(argument[:-1])
-        except Exception as e:
-            return -2
-
-        return value * time_dict[unit]
-
-
 class Moderation(commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -65,13 +45,13 @@ class Moderation(commands.Cog):
     @commands.command(name='ban', description="Banning specific user.")
     @commands.has_permissions(ban_members=True)
     @commands.check(private_message)
-    async def ban(self, ctx, member: commands.MemberConverter, *, reason=None):
+    async def ban(self, ctx, member: commands.MemberConverter, *, reason):
         no_reason = 'No reason given.'
         if ctx.author.top_role.position < member.top_role.position:
-            await ctx.send('You can not kick users with role above you.')
+            await ctx.send('You can not ban users with role above you.')
         else:
             await member.send('You have been banned from {0}, reason: {1}. {2} banned you.'.format(ctx.guild.name, reason if reason is not None else no_reason, ctx.author.mention))
-            await member.ban(reason=reason)
+            await member.ban()
             await ctx.send('Banned {0}. Reason: {1}'.format(member.mention, reason if reason is not None else no_reason, ctx.author.mention))
         
     @ban.error
