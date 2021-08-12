@@ -151,6 +151,14 @@ class Syntax(commands.Bot):
         elif isinstance(error, commands.CheckFailure):
             await ctx.send(error)
 
+    async def on_guild_remove(self, guild):
+        conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+        cur = conn.cursor()
+        cur.execute(f"DELETE FROM prefix WHERE guild_id = '{guild.id}'")
+        conn.commit()
+        cur.close()
+        conn.close()
+
 
 client = Syntax()
 slash = SlashCommand(client, sync_commands=True)
