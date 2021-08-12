@@ -88,6 +88,7 @@ class Music(commands.Cog):
                 player.store('channel', ctx.channel.id)
                 await self.connect_to(ctx.guild.id, str(vc.id))
                 await ctx.send('Connected.')
+                await ctx.guild.change_voice_state(channel=vc, self_deaf=True)
 
     @join.error
     async def join_error(self, ctx, error):
@@ -126,6 +127,7 @@ class Music(commands.Cog):
                     player.store('guild', ctx.guild.id)
                     await self.connect_to(ctx.guild.id, str(vc.id))
                     await ctx.send('Connected.')
+                    await ctx.guild.change_voice_state(channel=vc, self_deaf=True)
                     ## PLAY SECTION ##
                     player = self.bot.music.player_manager.get(ctx.guild.id)
                     query = query.strip("<>")
