@@ -134,7 +134,7 @@ class Moderation(commands.Cog):
         channel_category = ctx.channel.category
         if answer.content == 'yes':
             await ctx.channel.delete()
-            nuked_channel = await ctx.guild.create_text_channel(channel_name, category=channel_category)
+            nuked_channel = await ctx.channel.clone()
             nuked_msg = await nuked_channel.send('Channel nuked\nhttps://tenor.com/view/explosion-explode-clouds-of-smoke-gif-17216934')
             await asyncio.sleep(5)
             await nuked_msg.delete()
