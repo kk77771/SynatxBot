@@ -25,7 +25,7 @@ logger.addHandler(stream_handler)
 initial_cogs = ['cogs.music',
                 'cogs.moderation', 
                 'cogs.giveaway',
-                'cogs.genshin' 
+                'cogs.genshin', 
                 'cogs.memes', 
                 'cogs.server',  
                 'cogs.welcome', 
