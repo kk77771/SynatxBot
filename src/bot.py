@@ -31,7 +31,6 @@ initial_cogs = ['cogs.music',
                 'cogs.welcome', 
                 'cogs.activities', 
                 'cogs.levels',
-                'cogs.nsfw',
                 'cogs.admin',
                 ]
 
