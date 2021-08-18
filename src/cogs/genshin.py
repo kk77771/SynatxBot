@@ -50,6 +50,24 @@ class Genshin(commands.Cog):
     async def artifact_error(self, ctx, error):
         if isinstance(error, commands.BadArgument):
             await ctx.send(f"Error: `{error}`")
+
+    @genshin.group(name="domain", description="Sending genshin impact domain data")
+    async def domain(self, ctx, domain: str):
+        domain = domain.replace(' ', '-')
+        response = requests.get(f"https://api.genshin.dev/artifacts/{domain.lower()}")
+        if response.status_code == 404:
+            raise commands.BadArgument(message=f"no domain named {domain}.")
+        json = response.json()
+        embed = discord.Embed(title=f"{json['name']} information", description=json["description"], colour=discord.Colour.blue())
+        embed.add_field(name="Type", value=json["type"], inline=True)
+        embed.add_field(name="Location", value=json["location"], inline=True)
+        embed.add_field(name="Nation", value=json["nation"], inline=True)
+        await ctx.send(embed=embed)
+
+    @domain.error
+    async def domain_error(self, ctx, error):
+        if isinstance(error, commands.BadArgument):
+            await ctx.send(f"Error: `{error}`")
     
         
 
