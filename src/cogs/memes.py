@@ -3,16 +3,16 @@ import discord
 from discord.ext import commands
 import praw
 import random
-from bot import logger
+from bot import logger, client_id, client_secret, user_agent
 
 
 class Memes(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.reddit = praw.Reddit(
-            client_id='RTN_xcWa-EeRew', 
-            client_secret='kc6bMi_BLDbrRg1MGF5wM0997DWcHg',
-            user_agent='Memes',
+            client_id='client_id',
+            client_secret='client_secret',
+            user_agent='user_agent',
             check_for_async=False)
         self.subreddit = self.reddit.subreddit('memes')
         logger.info("Memes Cog loaded")

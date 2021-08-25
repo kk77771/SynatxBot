@@ -39,6 +39,10 @@ DB_PASS = os.getenv("DB_PASS")
 DB_HOST = os.getenv("DB_HOST")
 DB_USER = os.getenv("DB_USER")
 
+client_id = os.getenv("client_id")
+client_secret = os.getenv("client_secret")
+user_agent = os.getenv("user_agent")
+
 TOKEN = os.getenv("TOKEN")
 
 
